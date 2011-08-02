@@ -18,6 +18,7 @@ BuildRequires:	lirc-devel
 BuildRequires:	zlib-devel
 BuildRequires:	png-devel
 BuildRequires:	alsa-lib-devel
+BuildRequires:	desktop-file-utils
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
