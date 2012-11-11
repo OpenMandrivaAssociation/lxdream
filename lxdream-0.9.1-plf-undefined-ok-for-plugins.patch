@@ -1,0 +1,40 @@
+--- a/src/Makefile.in	2010-02-20 15:12:54.000000000 +0000
++++ b/src/Makefile.in	2010-02-20 15:22:34.000000000 +0000
+@@ -310,6 +310,7 @@
+ 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ CCLD = $(CC)
+ LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
++PLUGINLINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) -o $@
+ OBJCCOMPILE = $(OBJC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+ 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_OBJCFLAGS) $(OBJCFLAGS)
+ OBJCLD = $(OBJC)
+@@ -694,16 +695,16 @@
+ 	-test -z "$(pkglib_PROGRAMS)" || rm -f $(pkglib_PROGRAMS)
+ audio_alsa.@SOEXT@$(EXEEXT): $(audio_alsa_@SOEXT@_OBJECTS) $(audio_alsa_@SOEXT@_DEPENDENCIES) 
+ 	@rm -f audio_alsa.@SOEXT@$(EXEEXT)
+-	$(LINK) $(audio_alsa_@SOEXT@_LDFLAGS) $(audio_alsa_@SOEXT@_OBJECTS) $(audio_alsa_@SOEXT@_LDADD) $(LIBS)
++	$(PLUGINLINK) $(audio_alsa_@SOEXT@_LDFLAGS) $(audio_alsa_@SOEXT@_OBJECTS) $(audio_alsa_@SOEXT@_LDADD) $(LIBS)
+ audio_esd.@SOEXT@$(EXEEXT): $(audio_esd_@SOEXT@_OBJECTS) $(audio_esd_@SOEXT@_DEPENDENCIES) 
+ 	@rm -f audio_esd.@SOEXT@$(EXEEXT)
+-	$(LINK) $(audio_esd_@SOEXT@_LDFLAGS) $(audio_esd_@SOEXT@_OBJECTS) $(audio_esd_@SOEXT@_LDADD) $(LIBS)
++	$(PLUGINLINK) $(audio_esd_@SOEXT@_LDFLAGS) $(audio_esd_@SOEXT@_OBJECTS) $(audio_esd_@SOEXT@_LDADD) $(LIBS)
+ audio_pulse.@SOEXT@$(EXEEXT): $(audio_pulse_@SOEXT@_OBJECTS) $(audio_pulse_@SOEXT@_DEPENDENCIES) 
+ 	@rm -f audio_pulse.@SOEXT@$(EXEEXT)
+-	$(LINK) $(audio_pulse_@SOEXT@_LDFLAGS) $(audio_pulse_@SOEXT@_OBJECTS) $(audio_pulse_@SOEXT@_LDADD) $(LIBS)
++	$(PLUGINLINK) $(audio_pulse_@SOEXT@_LDFLAGS) $(audio_pulse_@SOEXT@_OBJECTS) $(audio_pulse_@SOEXT@_LDADD) $(LIBS)
+ audio_sdl.@SOEXT@$(EXEEXT): $(audio_sdl_@SOEXT@_OBJECTS) $(audio_sdl_@SOEXT@_DEPENDENCIES) 
+ 	@rm -f audio_sdl.@SOEXT@$(EXEEXT)
+-	$(LINK) $(audio_sdl_@SOEXT@_LDFLAGS) $(audio_sdl_@SOEXT@_OBJECTS) $(audio_sdl_@SOEXT@_LDADD) $(LIBS)
++	$(PLUGINLINK) $(audio_sdl_@SOEXT@_LDFLAGS) $(audio_sdl_@SOEXT@_OBJECTS) $(audio_sdl_@SOEXT@_LDADD) $(LIBS)
+ gendec$(EXEEXT): $(gendec_OBJECTS) $(gendec_DEPENDENCIES) 
+ 	@rm -f gendec$(EXEEXT)
+ 	$(LINK) $(gendec_LDFLAGS) $(gendec_OBJECTS) $(gendec_LDADD) $(LIBS)
+@@ -712,7 +713,7 @@
+ 	$(LINK) $(genglsl_LDFLAGS) $(genglsl_OBJECTS) $(genglsl_LDADD) $(LIBS)
+ input_lirc.@SOEXT@$(EXEEXT): $(input_lirc_@SOEXT@_OBJECTS) $(input_lirc_@SOEXT@_DEPENDENCIES) 
+ 	@rm -f input_lirc.@SOEXT@$(EXEEXT)
+-	$(LINK) $(input_lirc_@SOEXT@_LDFLAGS) $(input_lirc_@SOEXT@_OBJECTS) $(input_lirc_@SOEXT@_LDADD) $(LIBS)
++	$(PLUGINLINK) $(input_lirc_@SOEXT@_LDFLAGS) $(input_lirc_@SOEXT@_OBJECTS) $(input_lirc_@SOEXT@_LDADD) $(LIBS)
+ lxdream$(EXEEXT): $(lxdream_OBJECTS) $(lxdream_DEPENDENCIES) 
+ 	@rm -f lxdream$(EXEEXT)
+ 	$(lxdream_LINK) $(lxdream_LDFLAGS) $(lxdream_OBJECTS) $(lxdream_LDADD) $(LIBS)
