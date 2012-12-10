@@ -1,7 +1,6 @@
-Name:			lxdream
-Version:		0.9.1
-Release:		%mkrel 2
-
+Name:		lxdream
+Version:	0.9.1
+Release:	3
 Summary:	Sega Dreamcast emulator
 License:	GPLv2+
 Group:		Emulators
@@ -9,17 +8,17 @@ URL:		http://www.lxdream.org
 Source0:	%{name}-%{version}.tar.gz
 #http://www.lxdream.org/count.php?file=%{name}-%{version}.tar.gz
 Patch0:		lxdream-0.9.1-plf-undefined-ok-for-plugins.patch
-
-BuildRequires:	SDL-devel
-BuildRequires:	mesagl-devel
-BuildRequires:	gtk2-devel
-BuildRequires:	pulseaudio-devel
-BuildRequires:	lirc-devel
-BuildRequires:	zlib-devel
-BuildRequires:	png-devel
-BuildRequires:	alsa-lib-devel
+Patch1:		lxdream-0.9.1-glib.patch
+Patch2:		lxdream-0.9.1-linking.patch
+BuildRequires:	pkgconfig(sdl)
+BuildRequires:	pkgconfig(gl)
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(libpulse)
+BuildRequires:	pkgconfig(liblircclient0)
+BuildRequires:	pkgconfig(zlib)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(alsa)
 BuildRequires:	desktop-file-utils
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Lxdream is a Sega Dreamcast emulator.
@@ -27,13 +26,13 @@ Lxdream is a Sega Dreamcast emulator.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
-%configure
-%make
 
+%configure 
 %install
-rm -rf %{buildroot}
 %makeinstall
 
 # xdg menus
@@ -51,7 +50,6 @@ desktop-file-install --vendor="" \
 %find_lang %{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc ChangeLog
 %{_bindir}/lxdream
 %{_libdir}/lxdream
@@ -60,6 +58,4 @@ desktop-file-install --vendor="" \
 %{_mandir}/man1/lxdream.1*
 %config(noreplace) %{_sysconfdir}/lxdreamrc
 
-%clean
-rm -rf %{buildroot}
 
