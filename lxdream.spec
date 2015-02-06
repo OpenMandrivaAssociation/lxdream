@@ -1,6 +1,6 @@
 Name:		lxdream
 Version:	0.9.1
-Release:	3
+Release:	4
 Summary:	Sega Dreamcast emulator
 License:	GPLv2+
 Group:		Emulators
