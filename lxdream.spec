@@ -4,7 +4,7 @@ Release:	4
 Summary:	Sega Dreamcast emulator
 License:	GPLv2+
 Group:		Emulators
-URL:		http://www.lxdream.org
+URL:		https://www.lxdream.org
 Source0:	%{name}-%{version}.tar.gz
 #http://www.lxdream.org/count.php?file=%{name}-%{version}.tar.gz
 Patch0:		lxdream-0.9.1-plf-undefined-ok-for-plugins.patch
