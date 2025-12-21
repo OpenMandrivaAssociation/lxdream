@@ -10,6 +10,11 @@ Source0:	%{name}-%{version}.tar.gz
 Patch0:		lxdream-0.9.1-plf-undefined-ok-for-plugins.patch
 Patch1:		lxdream-0.9.1-glib.patch
 Patch2:		lxdream-0.9.1-linking.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(gtk+-2.0)
